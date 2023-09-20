@@ -15,9 +15,9 @@ RUN python -m pip install -r /app/requirements.txt
 
 
 COPY ./chainlit.md /app/chainlit.md
-COPY ./.chainlit /app/.chainlit
+COPY ./chainlit /app/.chainlit
 COPY ./app.py /app/app.py
-COPY ./.env /app/.env
+# COPY ./.env /app/.env
 
 # EXPOSE 8000
 

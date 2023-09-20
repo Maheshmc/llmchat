@@ -1,0 +1,8 @@
+langchain
+chromadb
+tiktoken
+chainlit
+openai
+gdown
+pathlib 
+pdfplumber

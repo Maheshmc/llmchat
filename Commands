@@ -1,0 +1,2 @@
+ podman build -t llmchat:latest .
+ podman run -p 8000:8000 localhost/llmchat

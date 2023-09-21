@@ -151,6 +151,7 @@ def create_search_engine(files):
         client_settings=client_settings,
         persist_directory=".chromadb" 
     )
+    
     ##########################################################################
 
     return search_engine
@@ -164,16 +165,16 @@ async def on_chat_start():
     print("Downloading files from google drive")
     url=os.environ.get("GDRIVE_URL")
     print("URL from the env is ",{url})
+
+
+
+
     gdown.download_folder(url, quiet=True, use_cookies=False,remaining_ok=True)
 
     print("Downloaded files")
 
     files = [f for f in pathlib.Path('./Fintechdocs').iterdir() if f.is_file()]
 
-    msg = cl.Message(
-        content=f"Processing `{len(files)}` files", disable_human_feedback=True
-    )
-    await msg.send()
 
 
     print("Creating Search Engines")
@@ -203,6 +204,11 @@ async def on_chat_start():
     )
 
     cl.user_session.set("chain", chain)
+
+    msg = cl.Message(
+        content=f"Processed `{len(files)}` files from google drive, now you can start asking questions", disable_human_feedback=True
+    )
+    await msg.send()
 
 
 @cl.on_message
